@@ -1,0 +1,5 @@
+{
+  "name": "VeriWeb - URL Safety Analyzer",
+  "description": "Intelligent URL safety analysis system that evaluates suspicious links using heuristic analysis and AI-driven threat detection.",
+  "requestFramePermissions": []
+}
