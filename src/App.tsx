@@ -45,21 +45,21 @@ export default function App() {
     setError(null);
     setResult(null);
     
-    // Start simulation steps
     setStep('PROCESSING');
     
     try {
-      // Simulate processing time for UX
-      await new Promise(r => setTimeout(r, 800));
+      // Start AI Analysis immediately
+      const analysisPromise = analyzeUrlWithAI(url);
+      
+      // Quickly cycle through steps for visual feedback without long delays
       setStep('EXTRACTION');
-      await new Promise(r => setTimeout(r, 1000));
+      await new Promise(r => setTimeout(r, 100));
       setStep('PATTERN_ANALYSIS');
       
-      // Actual AI Analysis
-      const analysis = await analyzeUrlWithAI(url);
+      const analysis = await analysisPromise;
       
       setStep('PREDICTION');
-      await new Promise(r => setTimeout(r, 800));
+      await new Promise(r => setTimeout(r, 100));
       
       setResult(analysis);
       setStep('COMPLETED');

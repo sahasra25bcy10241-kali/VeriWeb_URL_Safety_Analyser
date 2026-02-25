@@ -1,4 +1,4 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type, ThinkingLevel } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
@@ -32,6 +32,7 @@ export async function analyzeUrlWithAI(url: string): Promise<AnalysisResult> {
 
     Provide a safety score (0-100, where 100 is perfectly safe), a status classification, a list of potential threats found, recommendations for the user, and a brief explanation.`,
     config: {
+      thinkingConfig: { thinkingLevel: ThinkingLevel.LOW },
       responseMimeType: "application/json",
       responseSchema: {
         type: Type.OBJECT,
